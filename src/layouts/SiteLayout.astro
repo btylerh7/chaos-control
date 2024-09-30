@@ -1,0 +1,38 @@
+---
+import Navbar from '../components/Navbar.astro';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Chaos Control - Tyler's Blog</title>
+	</head>
+	<body>
+		<Navbar />
+		<main>
+			<slot />
+		</main>
+	</body>
+</html>
+
+<style is:global>
+*, *::before, *::after {
+	box-sizing: border-box;
+
+
+}
+body {
+	background: #1e1e40;
+	color: #ffffff;
+}
+main {
+	padding: 2rem;
+	margin: auto;
+	display: grid;
+	place-content: center;
+	max-width: 1200px;
+}
+</style>
