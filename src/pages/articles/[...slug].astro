@@ -2,6 +2,7 @@
 import SiteLayout from '../../layouts/SiteLayout.astro';
 
 import {getEntry} from 'astro:content';
+import { formatDate } from '../../utils';
 
 const {slug} = Astro.params;
 if(slug === undefined) {
@@ -17,5 +18,30 @@ const { Content } = await entry.render();
 
 <SiteLayout>
 	<h1>{entry.data.title}</h1>
+	<section class="metadata">
+		<p class="author">By {entry.data.author}</p>
+		<p class="date">Published on {formatDate(entry.data.publishDate)}
+	</section>
 	<Content />
 </SiteLayout>
+
+
+<style>
+h1 {
+	font-weight: 900;
+	font-size: 2.5em;
+	margin-bottom: 0.25rem;
+}
+.metadata {
+	display: flex;
+	gap: 1rem;
+	justify-content: flex-start;
+	align-items: flex-start;
+	font-size: 0.8em;
+
+	& p {
+		margin-top: 0;
+	}
+}
+
+</style>
