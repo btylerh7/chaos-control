@@ -1,0 +1,33 @@
+---
+import {formatDate} from '../utils';
+import type { CollectionEntry } from 'astro:content';
+
+const {article} = Astro.props;
+
+interface Props {
+	article: CollectionEntry<'blog'>
+}
+---
+
+<article class="article">
+	<h1>{article.data.title}</h1>
+	<p>{formatDate(article.data.publishDate)}</p>
+	<a href={'/articles/' + article.slug}>Read More</a>
+	<ul>
+		{article.data.tags.map(tag => (
+			<li>{tag}</li>
+		))}
+	</ul>
+</article>
+
+<style>
+.article {
+	display: grid;
+	border: 1px solid black;
+	border-radius: 1rem;
+	padding: 1rem;
+	max-width: fit-content;
+	background: white;
+	color: black;
+}
+</style>
