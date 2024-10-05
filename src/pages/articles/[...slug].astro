@@ -3,6 +3,9 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
 
 import {getEntry} from 'astro:content';
 import { formatDate } from '../../utils';
+import { db } from 'astro:db';
+import { Reactions } from 'astro:db';
+import { eq } from 'astro:db';
 
 const {slug} = Astro.params;
 if(slug === undefined) {
@@ -14,6 +17,16 @@ if (entry == undefined) {
 }
 const { Content } = await entry.render();
 
+const reactions = await db
+.select({
+	emoji: Reactions.emoji,
+	count: Reactions.count
+})
+.from(Reactions)
+.where(eq(Reactions.postSlug, slug))
+const showLike = reactions.length == 0;
+
+
 ---
 
 <SiteLayout>
@@ -23,6 +36,44 @@ const { Content } = await entry.render();
 		<p class="date">Published on {formatDate(entry.data.publishDate)}
 	</section>
 	<Content />
+	<section class="reactions">
+		<h2>Reactions</h2>
+		{reactions.map(reaction => (
+		<button 
+			class="reactButton"  
+			data-reaction={reaction.emoji}
+			data-count={reaction.count} 
+			data-slug={slug}
+		>{reaction.emoji} {reaction.count}</button>
+		))}
+		{ showLike && <button class="reactButton" data-reaction={'👍'} data-count=0 data-slug={slug}>Like</button> }
+	</section>
+	<script>
+	import { actions } from 'astro:actions';
+	async function react(slug: string, emoji: string, count: number) {
+		console.log(emoji, count)
+		const result = await actions.emojiReact({postSlug: slug, emoji, startingCount: count})
+		return result.data?.[0].count ?? undefined
+
+	}
+	document.querySelectorAll('.reactButton').forEach(button => {
+		button.addEventListener('click', async (e) => {
+			console.log('button clicked')
+			const reaction = button.getAttribute('data-reaction');
+			const count = Number(button.getAttribute('data-count'));
+			const slug = button.getAttribute('data-slug');
+			console.log(reaction, count, slug)
+			const result = await react(slug!, reaction!, count!)
+			console.log(result)
+			if (result) {
+				button.setAttribute('data-count', result.toString())
+				button.innerHTML = `${reaction} ${result}`
+			}
+		})
+	})
+
+
+	</script>
 </SiteLayout>
 
 
