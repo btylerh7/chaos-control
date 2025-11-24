@@ -7,11 +7,25 @@
 	<link rel="stylesheet" href="/styles.css">
 	<script src="/js/components/SiteHeader.js"></script>
 	<script src="/js/components/StrudelButton.js"></script>
+	<script>
+		document.querySelectorAll('.songlinks > a').forEach(link => {
+			link.addEventListener(e) => {
+				e.preventDefault()
+				console.log(e.href)
+
+			})
+		})
+	</script>
 </head>
 <body>
 	<div class="main-container">
 		<site-header></site-header>
-		<strudel-button></strudel-button>
+			<main>
+				<h1>Strudel Showcase</h1>
+				<article class="songlinks">
+					<a href="/strudel-showcase/song?song=golden">Golden (Originally by HUNTR/X)</a>
+				</article>
+			</main>
 	</div>
 </body>
 </html>

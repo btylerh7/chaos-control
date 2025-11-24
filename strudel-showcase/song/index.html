@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Strudel Showcase</title>
+		<link rel="stylesheet" href="/styles.css">
+		<script src="/js/components/SiteHeader.js"></script>
+		<script src="/js/components/StrudelButton.js"></script>
+		<script src="/js/components/Strudel.js"></script>
+		<script src="https://unpkg.com/@strudel/repl@latest"></script>
+		<script src="https://unpkg.com/@strudel/web@latest"></script>
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				initStrudel(() => {
+					samples('github:tidalcycles/dirt-samples');
+
+				})
+				const url = new URL(window.location.href);
+				const params = new URLSearchParams(url.search);
+				const filename=params.get("song");
+				document.querySelector("strudel-repl").setAttribute("filename", filename);
+			})
+		</script>
+	</head>
+	<body>
+		<div class="main-container">
+			<site-header></site-header>
+			<strudel-button>
+				Click into the editor and press <code>Ctrl + Enter</code>
+				to start and <code>Ctrl + .</code>
+				to stop. Alternatively, use the buttons below.
+			</strudel-button>
+			<strudel-repl></strudel-repl>
+		</div>
+	</body>
+</html>
