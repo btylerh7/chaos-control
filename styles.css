@@ -1,0 +1,68 @@
+/* https://www.dafont.com/zacchary-dempsey-plante.d6765 */
+@font-face {
+	font-family: "Pixellari";
+	src: url("/assets/fonts/Pixellari.ttf") format("truetype");
+}
+/* https://www.fontsquirrel.com/assets/fonts/Aaargh */
+@font-face {
+	font-family: "Aaargh";
+	src:
+		url(/assets/fonts/aaargh-webfont.woff2) format("woff2"),
+		url(/assets/fonts/aaargh-webfont.woff) format("woff");
+}
+@font-face {
+	font-family: "Fira Code";
+	src:
+		url(/assets/fonts/FiraCode-Regular.woff2) format("woff2"),
+		url(/assets/fonts/FiraCode-Regular.woff) format("woff");
+}
+
+:root {
+	--main-font: "Fira Code";
+	--app-background: #fafafa;
+	--app-text-color: black;
+
+	/* shadow the hedgehog red */
+	--accent-color: rgb(220, 0, 0);
+
+	--link-color: var(--accent-color);
+	--border-radius: 0.5rem;
+	--auto-column-size: 250px;
+	--box-border: 2px solid hsl(from var(--accent-color) h 40% 30%);
+	--light-accent: hsl(from var(--accent-color) h 50% 30%);
+	--triangle-gradient: linear-gradient(45deg, black 50%, var(--light-accent));
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	/* background-color: var(--app-background); */
+
+	background: var(--triangle-gradient);
+	background-size: 10px 10px;
+	color: var(--app-text-color);
+	max-width: 1150px;
+	padding: 2em;
+	margin: auto;
+	font-family: var(--main-font);
+	font-size: 14px;
+}
+.main-container {
+	background: var(--app-background);
+	padding: 1em;
+	box-shadow: 0px 0px 18px var(--accent-color);
+}
+
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--app-background: black;
+		--app-text-color: white;
+	}
+}

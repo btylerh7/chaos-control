@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Chaos Control - Home</title>
+		<script src="/js/components/SiteHeader.js"></script>
+		<link rel="stylesheet" href="styles.css">
+		<script src="/js/components/StrudelButton.js"></script>
+		<script src="https://unpkg.com/@strudel/repl@latest"></script>
+		<script src="https://unpkg.com/@strudel/web@latest"></script>
+		<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			initStrudel(() => {
+				samples('github:tidalcycles/dirt-samples');
+
+			})
+		})
+		</script>
+
+	</head>
+	<body>
+		<div class="main-container">
+			<site-header></site-header>
+			<main>
+				<h1>Welcome to My Online Home!</h1>
+				<strudel-button>
+					<p>
+						Would you like some classic Shadow the Hedgehog background music but written by me with code?
+						Of course you do! (Look at the Strudel Showcase for more!)
+					</p>
+				</strudel-button>
+			</main>
+
+		</div>
+	</body>
+</html>
