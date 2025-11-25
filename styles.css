@@ -100,7 +100,30 @@ a {
 .songlinks {
 	display: grid;
 	gap: 1em;
+	border: 2px solid var(--app-text-color);
+	border-radius: var(--border-radius);
+	padding: 1rem;
+	margin-block: 1em;
 
+}
+.featured {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1em;
+	@media (width > 690px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+#collection {
+	display: grid;
+	@media (width > 700px) {
+		grid-template-columns: repeat(2, 1fr);
+		justify-content: center;
+		align-items: center;
+	}
+	@media (width > 900px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
 }
 
 @media (prefers-color-scheme: dark) {
