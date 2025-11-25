@@ -3,6 +3,7 @@
 	font-family: "Pixellari";
 	src: url("/assets/fonts/Pixellari.ttf") format("truetype");
 }
+
 /* https://www.fontsquirrel.com/assets/fonts/Aaargh */
 @font-face {
 	font-family: "Aaargh";
@@ -10,6 +11,7 @@
 		url(/assets/fonts/aaargh-webfont.woff2) format("woff2"),
 		url(/assets/fonts/aaargh-webfont.woff) format("woff");
 }
+
 @font-face {
 	font-family: "Fira Code";
 	src:
@@ -19,6 +21,7 @@
 
 :root {
 	--main-font: "Fira Code";
+	--secondary-font: "Pixellari";
 	--app-background: #fafafa;
 	--app-text-color: black;
 
@@ -51,14 +54,54 @@ body {
 	padding: 2em;
 	margin: auto;
 	font-family: var(--main-font);
-	font-size: 14px;
+	/* font-size: 14px; */
 }
+
 .main-container {
+	display: flex;
+	flex-direction: column;
 	background: var(--app-background);
 	padding: 1em;
 	box-shadow: 0px 0px 18px var(--accent-color);
+	border: var(--box-border);
+	border-radius: 5px;
+	gap: 0.5em;
 }
 
+a {
+	color: var(--accent-color);
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+
+	&:visited {
+		color: var(--accent-color);
+	}
+
+}
+
+.shadow-button {
+	padding-inline: 1rem;
+	padding-block: 0.5rem;
+	color: white;
+	background: var(--accent-color);
+	border: none;
+	border-radius: var(--border-radius);
+
+	&:hover {
+		cursor: pointer;
+		background-image: url("/assets/black-arms-resized.png");
+		background-size: cover;
+	}
+}
+
+.songlinks {
+	display: grid;
+	gap: 1em;
+
+}
 
 @media (prefers-color-scheme: dark) {
 	:root {

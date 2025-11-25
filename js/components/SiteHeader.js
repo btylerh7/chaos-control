@@ -7,12 +7,15 @@ class SiteHeader extends HTMLElement {
     template.innerHTML = `
 	<style>
 	    header {
-		font-family: var(--main-font);
 		display: grid;
 		align-items: center;
-		@media (width > 500px) {
+		justify-content: center;
+		grid-template-columns: 1fr;
+		@media (width > 750px) {
 		    grid-template-columns: 1fr 1fr;
+		    justify-content: start;
 		}
+		font-family: var(--secondary-font);
 		padding-inline: 1em;
 	    }
 	    nav {
@@ -25,23 +28,40 @@ class SiteHeader extends HTMLElement {
 	    }
 	    a {
 		text-decoration: none;
+		font-weight: 700;
+		font-family: var(--secondary-font);
 		color: var(--app-text-color);
-		height: fit-content;
+		padding: 1rem 1.5rem;
+		@media (width > 550px) {
+			max-width: 30ch;
+		}
+
+		&:visited {
+			color: var(--app-text-color);
+		}
 		&:hover {
-		    text-decoration: underline;
+			text-decoration: underline;
+			background-color: var(--accent-color);
+			color: white !important;
+			background-image: url("/assets/black-arms-resized.png");
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
 		}
 	    }
 	    .header-text {
+		font-size: 14px;
 		display: flex;
 		flex-direction: column;
+		font-weight: 700;
 	    }
 	    .logo {
 		display: flex;
-		gap: 1em;
 		align-items: center;
+		gap: 1rem;
+
 		& p {
 		    margin: 0 0 0.25em 0;
-		    font-family: "Pixellari";
 		    text-align: center;
 		}
 		& img {
@@ -54,7 +74,7 @@ class SiteHeader extends HTMLElement {
 	    <div class="logo">
 		<img src="/assets/ChaosEmeraldRed.png" alt="A red chaos emerald" />
 		<div class="header-text">
-		    <p style="font-size: 1.75em;">CHAOS CONTROL</p>
+		    <p style="font-size: 1.50em;">CHAOS CONTROL</p>
 		    <p style="font-size: 0.75em;">Life is chaotic, write fun HTML instead</p>
 		</div>
 	    </div>
