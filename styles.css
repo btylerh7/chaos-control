@@ -114,6 +114,20 @@ a {
 		grid-template-columns: repeat(3, 1fr);
 	}
 }
+.album-header {
+	display: grid;
+	@media (width > 500px) {
+		grid-template-columns: 1fr 1fr;
+	}
+	gap: 1em;
+
+}
+.album-metadata {
+	display: grid;
+	margin-block: 0;
+	transform: translateY(15px);
+
+}
 #collection {
 	display: grid;
 	@media (width > 700px) {

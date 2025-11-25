@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Strudel Showcase</title>
 		<link rel="stylesheet" href="/styles.css">
+		<script src="/js/script.js"></script>
 		<script src="/js/components/SiteHeader.js"></script>
 		<script src="/js/components/strudel/StrudelButton.js"></script>
 		<script src="/js/components/strudel/Strudel.js"></script>
@@ -16,8 +17,8 @@
 					samples('github:tidalcycles/dirt-samples');
 
 				})
-				const url = new URL(window.location.href);
-				const params = new URLSearchParams(url.search);
+				// see script.js
+				const params = getUrlParams();
 				const filename=params.get("song");
 				document.querySelector("strudel-repl").setAttribute("filename", filename);
 			})

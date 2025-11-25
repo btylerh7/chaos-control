@@ -12,7 +12,6 @@ class Album extends HTMLElement {
     const pageLink = `/collection/album?artist=${artistUrl}&title=${titleUrl}`;
     const imageLink = `/assets/albums/${artist}/${title}.jpg`;
     const template = document.createElement("template");
-    console.log({ artist, title, url });
     template.innerHTML = `
       <a class="collection-link" href="${pageLink}">
 	<article class="album" title=${title}>

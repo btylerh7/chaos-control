@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Album</title>
+		<link rel="stylesheet" href="/styles.css">
+		<script src="/js/components/SiteHeader.js"></script>
+		<script src="/js/components/collection/Album.js"></script>
+		<script src="/js/components/collection/CdCover.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+		<script src="/js/script.js"></script>
+		<script src="/js/components/collection/MarkdownDisplay.js"></script>
+		<script defer>
+		document.addEventListener('DOMContentLoaded', () => {
+			const params = getUrlParams();
+			const artist = params.get("artist");
+			const title = params.get("title");
+			const url = `${artist}/${title}`;
+			const result = albums.find(album => album.url == url)
+			console.log('setting attributes');
+			document.querySelector('title').innerText = `${result.title} - Album Details`;
+			document.getElementById('album-title').innerText = result.title;
+			document.getElementById('details').innerHTML = `
+				<div class="album-header">
+					<cd-cover artist="${result.artist}" title="${result.title}"></cd-cover>
+					<div class"album-metadata">
+						<h2>${result.title}</h2>
+						<p>Released by ${result.artist}</p>
+						<p>Released in ${result.releaseDate}</p>
+						<p>Added to collection on ${result.addDate}</p>
+					</div>
+				</div>
+				<markdown-display artist="${result.artist}" title="${result.title}"></markdown-display>
+			`;
+
+		})
+		</script>
+
+</head>
+<body>
+			<!-- 
+				This site makes use of a lot of Web Components to both speed up repetetive writing
+				as well as to make more advanced concepts a reality within just plain html pages!
+				See documentation: https://developer.mozilla.org/en-US/docs/Web/API/Web_components
+				A wonderful tutorial: https://www.youtube.com/watch?v=2I7uX8m0Ta0
+			-->
+		<site-header></site-header>
+		<div class="main-container">
+			<h1 id="album-title">Album Details</h1>
+			<div id="details"></div>
+		</div>
+
+	
+</body>
+</html>

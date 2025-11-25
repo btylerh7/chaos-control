@@ -5,7 +5,6 @@ class CDCover extends HTMLElement {
   connectedCallback() {
     const title = this.getAttribute("title");
     const artist = this.getAttribute("artist");
-    console.log({ artist, title });
     const coverSrc = `/assets/albums/${artist}/${title}.jpg`;
     const template = document.createElement("template");
     const imageAlt = `${title} by ${artist} album cover`;
